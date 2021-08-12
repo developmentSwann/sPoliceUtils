@@ -19,218 +19,214 @@ AddEventHandler('esx:setJob', function(job)
 	ESX.PlayerData.job = job
 end)
 
-RMenu.Add('garagepolice', 'main', RageUI.CreateMenu("Garage", "Garage du LSPD"))
-RMenu:Get('garagepolice', 'main' ):SetRectangleBanner(0, 0, 0, 255)
 
 
 
-Citizen.CreateThread(function()
-    while true do
-
-        
-        RageUI.IsVisible(RMenu:Get('garagepolice', 'main'), true, true, true, function() 
-
-            
-
+function MenuCar()
+    local sMenuCar = RageUI.CreateMenu("Garage", "Garage du LSPD")
+    sMenuCar:SetRectangleBanner(0, 0, 0, 255)
+    RageUI.Visible(sMenuCar, not RageUI.Visible(sMenuCar))
+    while sMenuCar do 
+        Citizen.Wait(0)
+        RageUI.IsVisible(sMenuCar, true, true,true, function()
+  
             if ESX.PlayerData.job.grade_name == 'recruit' or ESX.PlayerData.job.grade_name == 'officer' or ESX.PlayerData.job.grade_name == 'boss' or ESX.PlayerData.job.grade_name == 'intendent' or ESX.PlayerData.job.grade_name == 'sergeant' or ESX.PlayerData.job.grade_name == 'lieutenant'or ESX.PlayerData.job.grade_name == 'chef' then 
-                    RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Crown Victoria : ~y~[LSPD]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                    if (Selected) then
-                        
+                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Crown Victoria : ~y~[LSPD]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+                if (Selected) then
+                    
+                Citizen.Wait(0)  
+                spawnuniCar("police")
+                RageUI.CloseAll()
+                end
+            end)
+
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Intervention : ~y~[LSPD]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+                if (Selected) then
+                    
+                Citizen.Wait(0)  
+                spawnuniCar("police2")
+                RageUI.CloseAll()
+                end
+            end)
+
+
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Interceptor : ~y~[LSPD]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+                if (Selected) then
+                    
+                Citizen.Wait(0)  
+                spawnuniCar("police3")
+                RageUI.CloseAll()
+                end
+            end)
+
+
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Bike : ~y~[LSPD]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+                if (Selected) then
+                    
+                Citizen.Wait(0)  
+                spawnuniCar("policeb")
+                RageUI.CloseAll()
+                end
+            end)
+
+
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Transporter : ~y~[LSPD]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+                if (Selected) then
+                    
+                Citizen.Wait(0)  
+                spawnuniCar("policet")
+                RageUI.CloseAll()
+                end
+            end)
+
+
+            
+
+        else
+
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Crown Victoria : ~y~[LSPD]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+                if (Selected) then
+                end
+            end)
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Intervention : ~y~[LSPD]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+                if (Selected) then
+                end
+            end)
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Interceptor : ~y~[LSPD]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+                if (Selected) then
+                end
+            end)
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Bike : ~y~[LSPD]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+                if (Selected) then
+                end
+            end)
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Transporter : ~y~[LSPD]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+                if (Selected) then
+                end
+            end)
+        end
+
+    
+
+        if  ESX.PlayerData.job.grade_name == 'intendent' or ESX.PlayerData.job.grade_name == 'lieutenant'  or ESX.PlayerData.job.grade_name == 'chef' or ESX.PlayerData.job.grade_name == 'boss' then
+
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Granger : ~y~ [SWAT]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+                if (Selected) then
                     Citizen.Wait(0)  
-                    spawnuniCar("police")
+                    spawnuniCar("fbi2")
                     RageUI.CloseAll()
-                    end
-                end)
-
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Intervention : ~y~[LSPD]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                    if (Selected) then
-                        
+                end
+            end)
+            
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Insurgent : ~y~ [SWAT]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+                if (Selected) then
                     Citizen.Wait(0)  
-                    spawnuniCar("police2")
+                    spawnuniCar3("policeinsurgent")
                     RageUI.CloseAll()
-                    end
-                end)
+                end
+            end)
 
-
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Interceptor : ~y~[LSPD]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                    if (Selected) then
-                        
-                    Citizen.Wait(0)  
-                    spawnuniCar("police3")
-                    RageUI.CloseAll()
-                    end
-                end)
-
-
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Bike : ~y~[LSPD]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                    if (Selected) then
-                        
-                    Citizen.Wait(0)  
-                    spawnuniCar("policeb")
-                    RageUI.CloseAll()
-                    end
-                end)
-
-
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Transporter : ~y~[LSPD]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                    if (Selected) then
-                        
-                    Citizen.Wait(0)  
-                    spawnuniCar("policet")
-                    RageUI.CloseAll()
-                    end
-                end)
-
-
-                
-
-            else
-
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Crown Victoria : ~y~[LSPD]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                    if (Selected) then
-                    end
-                end)
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Intervention : ~y~[LSPD]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                    if (Selected) then
-                    end
-                end)
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Interceptor : ~y~[LSPD]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                    if (Selected) then
-                    end
-                end)
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Bike : ~y~[LSPD]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                    if (Selected) then
-                    end
-                end)
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Transporter : ~y~[LSPD]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                    if (Selected) then
-                    end
-                end)
+            RageUI.ButtonWithStyle("÷ Véhicule - ~b~  BMR  : ~y~ [BMR]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+            if (Selected) then
+            Citizen.Wait(0)  
+            spawnuniCar("r1200rtp")
+            RageUI.CloseAll()
             end
+        end)
+
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ GT-63 : ~y~[VIR]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+            if (Selected) then
+            Citizen.Wait(0)  
+            spawnuniCar("rmodgt63police")
+            RageUI.CloseAll()
+            end
+        end)
 
         
 
-            if  ESX.PlayerData.job.grade_name == 'intendent' or ESX.PlayerData.job.grade_name == 'lieutenant'  or ESX.PlayerData.job.grade_name == 'chef' or ESX.PlayerData.job.grade_name == 'boss' then
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Maserati : ~y~[VIR]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+            if (Selected) then
+            Citizen.Wait(0)  
+            spawnuniCar("ghispo2")
+            RageUI.CloseAll()
+            end
+        end)
 
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Granger : ~y~ [SWAT]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                    if (Selected) then
-                        Citizen.Wait(0)  
-                        spawnuniCar("fbi2")
-                        RageUI.CloseAll()
-                    end
-                end)
-                
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Insurgent : ~y~ [SWAT]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                    if (Selected) then
-                        Citizen.Wait(0)  
-                        spawnuniCar3("policeinsurgent")
-                        RageUI.CloseAll()
-                    end
-                end)
+    else
 
-                RageUI.ButtonWithStyle("÷ Véhicule - ~b~  BMR  : ~y~ [BMR]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                if (Selected) then
-                Citizen.Wait(0)  
-                spawnuniCar("r1200rtp")
-                RageUI.CloseAll()
-                end
-            end)
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Granger : ~y~[SWAT]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+            if (Selected) then
+            end
+        end)
 
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ GT-63 : ~y~[VIR]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                if (Selected) then
-                Citizen.Wait(0)  
-                spawnuniCar("rmodgt63police")
-                RageUI.CloseAll()
-                end
-            end)
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Insurgent : ~y~[SWAT]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+            if (Selected) then
+            end
+        end)
 
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Camaro : ~y~[VIR]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                if (Selected) then
-                Citizen.Wait(0)  
-                spawnuniCar2("rmodzl1police")
-                RageUI.CloseAll()
-                end
-            end)
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~  BMR  : ~y~[BMR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+            if (Selected) then
+            end
+        end)
 
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Maserati : ~y~[VIR]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                if (Selected) then
-                Citizen.Wait(0)  
-                spawnuniCar("ghispo2")
-                RageUI.CloseAll()
-                end
-            end)
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ GT-63 : ~y~[VIR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+            if (Selected) then
+            end
+        end)
 
-        else
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Camaro : ~y~[VIR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+            if (Selected) then
+            end
+        end)
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Maserati : ~y~[VIR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+            if (Selected) then
+            end
+        end)
+    end
 
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Granger : ~y~[SWAT]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                if (Selected) then
-                end
-            end)
+    if ESX.PlayerData.job.grade_name == 'boss' then
 
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Insurgent : ~y~[SWAT]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                if (Selected) then
-                end
-            end)
-    
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~  BMR  : ~y~[BMR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                if (Selected) then
-                end
-            end)
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Bus Pénitencier : ~y~[CMDT]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+            if (Selected) then
+            Citizen.Wait(0)  
+            spawnuniCar3("pbus")
+            RageUI.CloseAll()
+            end
+        end)
 
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ GT-63 : ~y~[VIR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                if (Selected) then
-                end
-            end)
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Banalisé : ~y~[CMDT]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+            if (Selected) then
+            Citizen.Wait(0)  
+            spawnuniCar("police4")
+            RageUI.CloseAll()
+            end
+        end)
+       
+    else
 
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Camaro : ~y~[VIR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                if (Selected) then
-                end
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Bus Pénitencier : ~y~[CMDT]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+            if (Selected) then
+            end
+        end)
+
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Banalisé : ~y~[CMDT]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+            if (Selected) then
+            end
+        end)
+        
+        
+    end
+
+
+        
+            end, function()
             end)
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Maserati : ~y~[VIR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                if (Selected) then
-                end
-            end)
+        if not RageUI.Visible(sMenuCar) then
+            sMenuCar = RMenu:DeleteType("Armurerie", true)
         end
+    end
+end
 
-        if ESX.PlayerData.job.grade_name == 'boss' then
-
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Bus Pénitencier : ~y~[CMDT]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                if (Selected) then
-                Citizen.Wait(0)  
-                spawnuniCar3("pbus")
-                RageUI.CloseAll()
-                end
-            end)
-
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Banalisé : ~y~[CMDT]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-                if (Selected) then
-                Citizen.Wait(0)  
-                spawnuniCar("police4")
-                RageUI.CloseAll()
-                end
-            end)
-        else
-
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Bus Pénitencier : ~y~[CMDT]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                if (Selected) then
-                end
-            end)
-    
-            RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Banalisé : ~y~[CMDT]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-                if (Selected) then
-                end
-            end)
-            
-        end
-
-
-            
-                end, function()
-                end)
-
-            Citizen.Wait(0)
-        end
-    end)
 
 
 
@@ -244,46 +240,32 @@ Citizen.CreateThread(function()
         },
     }
     
-    inZone = {}
-    local interval = 1000
+   
 
     Citizen.CreateThread(function()
         while true do
-            Citizen.Wait(interval)
+            local Timer = 500
             for k,v in pairs(positioncar)do 
+                if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then
                 local pCoords = GetEntityCoords(GetPlayerPed(-1), false)
                 local distance = Vdist(pCoords.x, pCoords.y, pCoords.z, positioncar[k].x, positioncar[k].y, positioncar[k].z)
-                if distance <= 18 then
+                if distance <= 7.0  then
+                    Timer = 0
                     DrawMarker(20, positioncar[k].x, positioncar[k].y, positioncar[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.3, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
-                    interval = 0
-                else
-                    if inZone[v.Zones] then 
-                        interval = 1000
-                        inZone[v.Zones] = false
                     end
-                    
-                end
-                if distance <= 1.2 then
-                    interval = 0
-                    inZone[v.Zones]= true
-                    if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' or ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'police' then
-                        ESX.ShowHelpNotification("Appuyez sur [~b~E~w~] pour accéder au garage")        
-                        if IsControlJustPressed(1,51) then
-                            RageUI.Visible(RMenu:Get('garagepolice', 'main'), not RageUI.Visible(RMenu:Get('garagepolice', 'main')))
+                    if distance <= 2.0 then
+                        Timer = 0   
+                                RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour accéder au garage", time_display = 1 })
+                                if IsControlJustPressed(1,51) then           
+                                    MenuCar()
+                            end   
                         end
-                    end
-    
-                else 
-                    if inZone[v.Zones] then 
-                        interval = 1000
-                        inZone[v.Zones] = false
-                    end
+                    end 
                 end
-            end
-            
+            Citizen.Wait(Timer)
         end
     end)
-    
+   
 
 function spawnuniCar(car)
     local car = GetHashKey(car)
@@ -440,44 +422,10 @@ function SetVehicleMaxMods(vehicle)
   end
 
   
-
-
-
-
-
   ------------------------ HELICO
 
-  RMenu.Add('garageheli', 'main', RageUI.CreateMenu("Garage", "Garage du LSPD"))
-  RMenu:Get('garageheli', 'main' ):SetRectangleBanner(0, 0, 0, 255)
 
-  Citizen.CreateThread(function()
-      while true do
-          RageUI.IsVisible(RMenu:Get('garageheli', 'main'), true, true, true, function() 
-  
-              RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Ranger au garage", nil, {RightLabel = "→→→"},true, function(Hovered, Active, Selected)
-              if (Selected) then   
-              local veh,dist4 = ESX.Game.GetClosestVehicle(playerCoords)
-              if dist4 < 4 then
-                  DeleteEntity(veh)
-                  RageUI.CloseAll()
-              end 
-          end
-      end) 
-  
-              RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Hélico du LSPD", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
-              if (Selected) then
-              Citizen.Wait(0)  
-              spawnuniHeli("polmav")
-              RageUI.CloseAll()
-              end
-          end)
-              
-                  end, function()
-                  end)
-  
-              Citizen.Wait(0)
-          end
-      end)
+
 
       function spawnuniHeli(car)
         local car = GetHashKey(car)
@@ -504,44 +452,66 @@ function SetVehicleMaxMods(vehicle)
         x = 448.69, y = -981.65, z = 43.69
     },
 }
-
-inZone = {}
-local interval = 1000
-  Citizen.CreateThread(function()
+Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(interval)
+        local Timer = 500
         for k,v in pairs(positionheli)do 
+            if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then
             local pCoords = GetEntityCoords(GetPlayerPed(-1), false)
             local distance = Vdist(pCoords.x, pCoords.y, pCoords.z, positionheli[k].x, positionheli[k].y, positionheli[k].z)
-            if distance <= 18 then
+            if distance <= 7.0  then
+                Timer = 0
                 DrawMarker(20, positionheli[k].x, positionheli[k].y, positionheli[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.3, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
-                interval = 0
-            else
-                if inZone[v.Zones] then 
-                    interval = 1000
-                    inZone[v.Zones] = false
                 end
-                
+                if distance <= 2.0 then
+                    Timer = 0   
+                            RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour accéder au garage", time_display = 1 })
+                            if IsControlJustPressed(1,51) then           
+                                MenuHeli()
+                        end   
+                    end
+                end 
             end
-            if distance <= 1.2 then
-                interval = 0
-                inZone[v.Zones]= true
-                ESX.ShowHelpNotification("Appuyez sur [~b~E~w~] pour accéder au garag")        
-                if IsControlJustPressed(1,51) then
-                    RageUI.Visible(RMenu:Get('garageheli', 'main'), not RageUI.Visible(RMenu:Get('garageheli', 'main')))
-                end
-
-            else 
-                if inZone[v.Zones] then 
-                    interval = 1000
-                    inZone[v.Zones] = false
-                end
-            end
-        end
-        
+        Citizen.Wait(Timer)
     end
 end)
 
+
+
+function MenuHeli()
+    local sMenuHeli = RageUI.CreateMenu("Garage", "Garage du LSPD")
+    sMenuHeli:SetRectangleBanner(0, 0, 0, 255)
+    RageUI.Visible(sMenuHeli, not RageUI.Visible(sMenuHeli))
+    while sMenuHeli do 
+        Citizen.Wait(0)
+        RageUI.IsVisible(sMenuHeli, true, true,true, function()
+  
+  
+                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Ranger au garage", nil, {RightLabel = "→→→"},true, function(Hovered, Active, Selected)
+                if (Selected) then   
+                local veh,dist4 = ESX.Game.GetClosestVehicle(playerCoords)
+                if dist4 < 4 then
+                    DeleteEntity(veh)
+                    RageUI.CloseAll()
+                end 
+            end
+        end) 
+    
+                RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Hélico du LSPD", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+                if (Selected) then
+                Citizen.Wait(0)  
+                spawnuniHeli("polmav")
+                RageUI.CloseAll()
+                end
+            end)
+                
+                    end, function()
+                    end)
+        if not RageUI.Visible(sMenuHeli) then
+            sMenuHeli = RMenu:DeleteType("Armurerie", true)
+        end
+    end
+end
 
   
 
@@ -552,58 +522,51 @@ end)
 pos = {
     {
     Zones = 'Zone1',
-    x = 437.44, y = -975.79, z = 24.7 },
+    x = 437.44, y = -975.79, z = 25.7 },
     {
     Zones = 'Zone2',
-    x = 433.44, y = -975.79, z = 24.7 },
+    x = 433.44, y = -975.79, z = 25.7 },
     {
     Zones = 'Zone3',
-    x = 462.40, y = -1019.7, z = 27.104 },
+    x = 462.40, y = -1019.7, z = 28.104 },
     {
     Zones = 'Zone4',
-    x = 469.12, y = -1024.52, z = 27.20 },
+    x = 469.12, y = -1024.52, z = 28.20 },
     {
     Zones = 'Zone5',
-    x = 1865.48, y = 3700.40, z = 32.14},
+    x = 1865.48, y = 3700.40, z = 33.14},
     {
     Zones = 'Zone6',
-    x = 455.84, y = -1024.35, z = 27.45 },
+    x = 455.84, y = -1024.35, z = 28.45 },
     {
     Zones = 'Zone7',
-    x = 447.45, y = -975.95, z = 24.7 },
+    x = 447.45, y = -975.95, z = 25.7 },
     {
     Zones = 'Zone8',
-    x = 451.8, y = -975.95, z = 24.7 },
+    x = 451.8, y = -975.95, z = 25.7 },
     {
     Zones = 'Zone9',
-    x = 1891.93, y = 3705.21, z = 31.84 }
+    x = 1891.93, y = 3705.21, z = 32.84 }
 }
 
 
 
 
-InZone = {}
-local interval = 1000
-
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(interval)
-        for k,v in pairs(pos) do
+        local Timer = 500
+        for k,v in pairs(pos)do 
+            if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then
             local pCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local distance = Vdist(pCoords.x, pCoords.y, pCoords.z, v.x, v.y, v.z)
-            if distance <= 13.0 then
-                if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' or ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'police' then
-                    interval = 0
-                    InZone[v.Zones] = true
-                    DrawMarker(2, v.x, v.y, v.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false);
+            local distance = Vdist(pCoords.x, pCoords.y, pCoords.z, pos[k].x, pos[k].y, pos[k].z)
+            if distance <= 15.0  then
+                Timer = 0
+                DrawMarker(21, v.x, v.y, v.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false);
                 end
-            else
-                if InZone[v.Zones] then
-                    interval = 1000
-                    InZone[v.Zones] = false
-                end
+               
+                end 
             end
-        end
+        Citizen.Wait(Timer)
     end
 end)
 
@@ -655,24 +618,18 @@ end)
 
 
 Citizen.CreateThread(function()
-  
     while true do
-
         Citizen.Wait(0)
-
         if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' or ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'police' then 
-
             local playerPed      = PlayerPedId()
             local coords         = GetEntityCoords(playerPed)
             local isInMarker     = false
             local currentStation = nil
             local currentPart    = nil
             local currentPartNum = nil
-
             for k,v in pairs(Config.PoliceStations) do
-                
                 for i=1, #v.VehicleDeleters, 1 do
-                    if GetDistanceBetweenCoords(coords, v.VehicleDeleters[i].x, v.VehicleDeleters[i].y, v.VehicleDeleters[i].z, true) < Config.MarkerSize.x then
+                    if GetDistanceBetweenCoords(coords, v.VehicleDeleters[i].x, v.VehicleDeleters[i].y, v.VehicleDeleters[i].z, true) < 2 then
                         isInMarker     = true
                         currentStation = k
                         currentPart    = 'VehicleDeleter'
@@ -681,16 +638,13 @@ Citizen.CreateThread(function()
                 end
                 -- Repair Zone 
                 for i=1, #v.VehicleRepair, 1 do
-              if GetDistanceBetweenCoords(coords, v.VehicleRepair[i].x, v.VehicleRepair[i].y, v.VehicleRepair[i].z, true) < Config.MarkerSize.x then
-                      isInMarker     = true
-                      currentStation = k
-                      currentPart    = 'VehicleRepair'
-                      currentPartNum = i
-              end
-          end
-          
-            
-
+                    if GetDistanceBetweenCoords(coords, v.VehicleRepair[i].x, v.VehicleRepair[i].y, v.VehicleRepair[i].z, true) <2 then
+                        isInMarker     = true
+                        currentStation = k
+                        currentPart    = 'VehicleRepair'
+                        currentPartNum = i
+                    end
+                end
             end
 
             local hasExited = false
@@ -731,15 +685,10 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-
         Citizen.Wait(0)
-
         if CurrentAction ~= nil then
             ESX.ShowHelpNotification(CurrentActionMsg)
-
             if IsControlJustReleased(0, 38) and ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == 'police' then
-
-               
                 if CurrentAction == 'delete_vehicle' then
                     if Config.EnableSocietyOwnedVehicles then
                           print(engineHealth)
@@ -763,11 +712,9 @@ Citizen.CreateThread(function()
                 elseif CurrentAction == 'remove_entity' then
                     DeleteEntity(CurrentActionData.entity)
                 end
-                
                 CurrentAction = nil
             end
         end -- CurrentAction end
-        
     end
 end)
 
