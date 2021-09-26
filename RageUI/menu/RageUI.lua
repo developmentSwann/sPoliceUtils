@@ -4,13 +4,19 @@
 --- DateTime: 21/04/2019 21:20
 ---
 
-print("^3 RageUI - https://github.com/iTexZoz/RageUI - OpenSource Advanced UI Api ^0")
+
 
 ---round
 ---@param num number
 ---@param numDecimalPlaces number
 ---@return number
 ---@public
+
+
+print('~r~~h~--------------------------------')
+print('~r~--------~p~sPoliceUtils | RageUI V1~r~--------')
+print('~r~--------~y~Développé par Swann#8224~r~--------')
+print('~r~~h~--------------------------------')
 function math.round(num, numDecimalPlaces)
     return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
 end
@@ -20,7 +26,6 @@ end
 ---@param Start number
 ---@return number
 ---@public
-
 function string.starts(String, Start)
     return string.sub(String, 1, string.len(Start)) == Start
 end
@@ -487,7 +492,7 @@ function RageUI.Background()
         if RageUI.CurrentMenu() then
             RageUI.ItemsSafeZone(RageUI.CurrentMenu)
             SetScriptGfxDrawOrder(0)
-            RenderSprite(RageUI.Settings.Items.Background.Dictionary, RageUI.Settings.Items.Background.Texture, RageUI.CurrentMenu.X, RageUI.CurrentMenu.Y + RageUI.Settings.Items.Background.Y + RageUI.CurrentMenu.SubtitleHeight, RageUI.Settings.Items.Background.Width + RageUI.CurrentMenu.WidthOffset, RageUI.ItemOffset, 255, 255, 255)
+            RenderSprite(RageUI.Settings.Items.Background.Dictionary, RageUI.Settings.Items.Background.Texture, RageUI.CurrentMenu.X, RageUI.CurrentMenu.Y + RageUI.Settings.Items.Background.Y + RageUI.CurrentMenu.SubtitleHeight, RageUI.Settings.Items.Background.Width + RageUI.CurrentMenu.WidthOffset, RageUI.ItemOffset, 0, 0, 0, 0, 255)
             SetScriptGfxDrawOrder(1)
         end
     end
@@ -701,3 +706,29 @@ function RageUI.GetStyleAudio()
     return RageUI.Settings.Audio.Use or "RageUI"
 end
 
+function RageUI.Header(EnableBanner, EnableGlare)
+    RageUI.Banner(EnableBanner, EnableGlare)
+    RageUI.Subtitle()
+end
+
+function RageUI.DrawContent(settings, items, panels)
+    if (settings.header ~= nil and settings.glare ~= nil) then
+        RageUI.Header(settings.header, settings.glare);
+    else
+        RageUI.Header(true, true);
+    end
+    if (items ~= nil) then
+        items()
+    end
+    RageUI.Background();
+    RageUI.Navigation();
+    RageUI.Description();
+    if (panels ~= nil) then
+        panels()
+    end
+    if (settings.instructionalButton ~= nil) then
+        RageUI.Render(settings.instructionalButton)
+    else
+        RageUI.Render(true)
+    end
+end

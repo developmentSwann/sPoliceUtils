@@ -142,8 +142,14 @@ function MenuCar()
             end
         end)
 
-        
-
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~  Jeep  : ~y~ [VIR]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+            if (Selected) then
+            Citizen.Wait(0)  
+            spawnuniCar2("rmodjeepp")
+            RageUI.CloseAll()
+            end
+        end)
+       
         RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Maserati : ~y~[VIR]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
             if (Selected) then
             Citizen.Wait(0)  
@@ -169,15 +175,16 @@ function MenuCar()
             end
         end)
 
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Jeep : ~y~[VIR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+            if (Selected) then
+            end
+        end)
+
         RageUI.ButtonWithStyle("÷ Véhicule - ~b~ GT-63 : ~y~[VIR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
             if (Selected) then
             end
         end)
 
-        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Camaro : ~y~[VIR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
-            if (Selected) then
-            end
-        end)
         RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Maserati : ~y~[VIR]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
             if (Selected) then
             end
@@ -201,7 +208,15 @@ function MenuCar()
             RageUI.CloseAll()
             end
         end)
-       
+
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Felon : ~y~[CMDT]", nil, {RightLabel = "→→"},true, function(Hovered, Active, Selected)
+            if (Selected) then
+            Citizen.Wait(0)  
+            spawnuniCar("policefelon")
+            RageUI.CloseAll()
+            end
+        end)
+
     else
 
         RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Bus Pénitencier : ~y~[CMDT]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
@@ -214,6 +229,10 @@ function MenuCar()
             end
         end)
         
+        RageUI.ButtonWithStyle("÷ Véhicule - ~b~ Felon : ~y~[CMDT]", description, {RightBadge = RageUI.BadgeStyle.Lock }, false, function(Hovered, Active, Selected)
+            if (Selected) then
+            end
+        end)
         
     end
 
@@ -240,31 +259,41 @@ end
         },
     }
     
-   
 
-    Citizen.CreateThread(function()
-        while true do
-            local Timer = 500
-            for k,v in pairs(positioncar)do 
-                if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then
+local interval = 1000
+InZone = {}
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(interval)
+        for k,v in pairs(position)do 
+            if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then
                 local pCoords = GetEntityCoords(GetPlayerPed(-1), false)
                 local distance = Vdist(pCoords.x, pCoords.y, pCoords.z, positioncar[k].x, positioncar[k].y, positioncar[k].z)
                 if distance <= 7.0  then
-                    Timer = 0
+                    interval = 0
+                    InZone[v.Zones] = true
                     DrawMarker(20, positioncar[k].x, positioncar[k].y, positioncar[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.3, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
+                else
+                    if InZone[v.Zones] then
+                        interval = 1000
+                        InZone[v.Zones] = false
                     end
-                    if distance <= 2.0 then
-                        Timer = 0   
-                                RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour accéder au garage", time_display = 1 })
-                                if IsControlJustPressed(1,51) then           
-                                    MenuCar()
-                            end   
-                        end
-                    end 
                 end
-            Citizen.Wait(Timer)
+                if distance <= 2.0 then
+                    interval = 0
+                    InZone[v.Zones] = true 
+                    RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour accéder au garage", time_display = 1 })
+                    if IsControlJustPressed(1,51) then           
+                        MenuCar()
+                     end
+    
+                end  
+                
+            end 
         end
-    end)
+    end
+end)
    
 
 function spawnuniCar(car)
@@ -283,6 +312,8 @@ function spawnuniCar(car)
         SetVehicleNumberPlateText(vehicle, plaque) 
         SetPedIntoVehicle(GetPlayerPed(-1),vehicle,-1)
         SetVehicleMaxMods(vehicle)
+        SetVehicleFuelLevel(vehicle,10000)
+        SetVehicleDirtLevel(vehicle, 0.0)
         SetVehicleLivery(vehicle, 0)
         SetVehicleExtra(vehicle, -1, true)
     else
@@ -308,6 +339,8 @@ function spawnuniCar2(car)
         SetVehicleNumberPlateText(vehicle, plaque) 
         SetPedIntoVehicle(GetPlayerPed(-1),vehicle,-1)
         SetVehicleMaxMods(vehicle)
+        SetVehicleFuelLevel(vehicle,10000)
+        SetVehicleDirtLevel(vehicle, 0.0)
         SetVehicleLivery(vehicle, 2)
         SetVehicleExtra(vehicle, -1, true)
     else
@@ -329,10 +362,12 @@ function spawnuniCar3(car)
         local vehicle = CreateVehicle(car, vector3(441.23, -1021.93, 28.5745), 87.14, true, false)
         SetEntityAsMissionEntity(vehicle, true, true)
         local plaque = "LSPD"..math.random(1,9)
-        SetVehicleNumberPlateText(vehicle, plaque) 
+        SetVehicleNumberPlateText(vehicle, plaque)
+        SetVehicleDirtLevel(vehicle, 0.0)
         SetPedIntoVehicle(GetPlayerPed(-1),vehicle,-1)
         SetVehicleMaxMods(vehicle)
         SetVehicleLivery(vehicle, 0)
+        SetVehicleFuelLevel(vehicle,10000)
         SetVehicleExtra(vehicle, -1, true)
     else
         ShowNotification("Aucun point de sortie disponible")
@@ -452,29 +487,44 @@ function SetVehicleMaxMods(vehicle)
         x = 448.69, y = -981.65, z = 43.69
     },
 }
+
+
+
+local interval = 1000
+InZone = {}
+
 Citizen.CreateThread(function()
     while true do
-        local Timer = 500
-        for k,v in pairs(positionheli)do 
+        Citizen.Wait(interval)
+        for k,v in pairs(position)do 
             if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then
-            local pCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local distance = Vdist(pCoords.x, pCoords.y, pCoords.z, positionheli[k].x, positionheli[k].y, positionheli[k].z)
-            if distance <= 7.0  then
-                Timer = 0
-                DrawMarker(20, positionheli[k].x, positionheli[k].y, positionheli[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.3, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
+                local pCoords = GetEntityCoords(GetPlayerPed(-1), false)
+                local distance = Vdist(pCoords.x, pCoords.y, pCoords.z, positionheli[k].x, positionheli[k].y, positionheli[k].z)
+                if distance <= 7.0  then
+                    interval = 0
+                    InZone[v.Zones] = true
+                    DrawMarker(20, positionheli[k].x, positionheli[k].y, positionheli[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.3, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
+                else
+                    if InZone[v.Zones] then
+                        interval = 1000
+                        InZone[v.Zones] = false
+                    end
                 end
                 if distance <= 2.0 then
-                    Timer = 0   
-                            RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour accéder au garage", time_display = 1 })
-                            if IsControlJustPressed(1,51) then           
-                                MenuHeli()
-                        end   
-                    end
-                end 
-            end
-        Citizen.Wait(Timer)
+                    interval = 0
+                    InZone[v.Zones] = true 
+                    RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour accéder au garage hélicpotère", time_display = 1 })
+                    if IsControlJustPressed(1,51) then           
+                        MenuHeli()
+                     end
+            
+                end  
+                
+            end 
+        end
     end
 end)
+   
 
 
 
@@ -685,6 +735,9 @@ end)
 
 Citizen.CreateThread(function()
     while true do
+
+
+        
         Citizen.Wait(0)
         if CurrentAction ~= nil then
             ESX.ShowHelpNotification(CurrentActionMsg)

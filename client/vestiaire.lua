@@ -34,7 +34,8 @@ local playerPed = GetPlayerPed(-1)
 
 
 function MenuRecruit()
-    local sMenuRecruit = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuRecruit = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
     sMenuRecruit:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuRecruit, not RageUI.Visible(sMenuRecruit))
     while sMenuRecruit do 
@@ -109,7 +110,8 @@ end
 
 
 function MenuGilet()
-        local sMenuGilet = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+        local playerPed = GetPlayerPed(-1)
+local sMenuGilet = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
         sMenuGilet:SetRectangleBanner(0, 0, 0, 255)
         RageUI.Visible(sMenuGilet, not RageUI.Visible(sMenuGilet))
         while sMenuGilet do 
@@ -166,7 +168,8 @@ end
 
 
     function MenuGilet2()
-        local sMenuGilet2 = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+        local playerPed = GetPlayerPed(-1)
+local sMenuGilet2 = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
         sMenuGilet2:SetRectangleBanner(0, 0, 0, 255)
         RageUI.Visible(sMenuGilet2, not RageUI.Visible(sMenuGilet2))
         while sMenuGilet2 do 
@@ -200,8 +203,9 @@ end
     end
 
 function MenuOfficier()
-    local sMenuOfficier = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
-    sMenuOfficer:SetRectangleBanner(0, 0, 0, 255)
+    local playerPed = GetPlayerPed(-1)
+local sMenuOfficier = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    sMenuOfficier:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuOfficier, not RageUI.Visible(sMenuOfficier))
     while sMenuOfficier do 
         Citizen.Wait(0)
@@ -283,7 +287,8 @@ function MenuOfficier()
 end
 
 function MenuSergent()
-    local sMenuSergeant = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuSergeant = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
     sMenuSergeant:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuSergeant, not RageUI.Visible(sMenuSergeant))
     while sMenuSergeant do 
@@ -370,7 +375,8 @@ end
 
 
 function MenuSergeantChef()
-    local sMenuSergeantC = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuSergeantC = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
     sMenuSergeantC:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuSergeantC, not RageUI.Visible(sMenuSergeantC))
     while sMenuSergeantC do 
@@ -457,7 +463,8 @@ end
 
 
 function MenuLieutenan()
-    local sMenuLieutenant = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuLieutenant = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
     sMenuLieutenant:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuLieutenant, not RageUI.Visible(sMenuLieutenant))
     while sMenuLieutenant do 
@@ -542,7 +549,8 @@ end
 
 
 function MenuCapitaine()
-    local sMenuCaptain = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuCaptain = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
     sMenuCaptain:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuCaptain, not RageUI.Visible(sMenuCaptain))
     while sMenuCaptain do 
@@ -630,7 +638,8 @@ end
 
 
 function MenuComandant()
-    local sMenuCommandant = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuCommandant = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
     sMenuCommandant:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuCommandant, not RageUI.Visible(sMenuCommandant))
     while sMenuCommandant do 
@@ -717,7 +726,8 @@ end
 
 
 function MenuHenry()
-    local sMenuHenry = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuHenry = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
     sMenuHenry:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuHenry, not RageUI.Visible(sMenuHenry))
     while sMenuHenry do 
@@ -794,7 +804,8 @@ end
 
 
 function MenuMary()
-    local sMenuMary = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuMary = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
     sMenuMary:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuMary, not RageUI.Visible(sMenuMary))
     while sMenuMary do 
@@ -875,7 +886,8 @@ end
 
 
 function MenuInter()
-    local sMenuInter = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuInter = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
     sMenuInter:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuInter, not RageUI.Visible(sMenuInter))
     while sMenuInter do 
@@ -955,7 +967,8 @@ end
 
 
 function MenuCeremonie()
-    local sMenuCeremonie = RageUI.CreateMenu("Armurerie", "Armurerie du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuCeremonie = RageUI.CreateMenu("Armurerie", "Armurerie du LSPD")
     sMenuCeremonie:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuCeremonie, not RageUI.Visible(sMenuCeremonie))
     while sMenuCeremonie do 
@@ -1031,7 +1044,8 @@ function MenuCeremonie()
 end
 
 function MenuVest()
-    local sMenuVests = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
+    local playerPed = GetPlayerPed(-1)
+local sMenuVests = RageUI.CreateMenu("Vestiaire", "Vestiaire du LSPD")
     sMenuVests:SetRectangleBanner(0, 0, 0, 255)
     RageUI.Visible(sMenuVests, not RageUI.Visible(sMenuVests))
     while sMenuVests do 
@@ -1247,30 +1261,38 @@ position = {
     },
 }
 
-
-
+local interval = 1000
+InZone = {}
 
 Citizen.CreateThread(function()
     while true do
-        local Timer = 500
+        Citizen.Wait(interval)
         for k,v in pairs(position)do 
             if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then
-            local pCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local distance = Vdist(pCoords.x, pCoords.y, pCoords.z, position[k].x, position[k].y, position[k].z)
-            if distance <= 7.0  then
-                Timer = 0
-                DrawMarker(20, position[k].x, position[k].y, position[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.3, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
+                local pCoords = GetEntityCoords(GetPlayerPed(-1), false)
+                local distance = Vdist(pCoords.x, pCoords.y, pCoords.z, position[k].x, position[k].y, position[k].z)
+                if distance <= 7.0  then
+                    interval = 0
+                    InZone[v.Zones] = true
+                    DrawMarker(20, position[k].x, position[k].y, position[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.3, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
+                else
+                    if InZone[v.Zones] then
+                        interval = 1000
+                        InZone[v.Zones] = false
+                    end
                 end
                 if distance <= 2.0 then
-                    Timer = 0   
-                            RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour accéder au vestiaire", time_display = 1 })
-                            if IsControlJustPressed(1,51) then           
-                                MenuVest()
-                        end   
-                    end
-                end 
-            end
-        Citizen.Wait(Timer)
+                    interval = 0
+                    InZone[v.Zones] = true 
+                    RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour accéder au vestiaire", time_display = 1 })
+                    if IsControlJustPressed(1,51) then           
+                        MenuVest()
+                     end
+           
+                end  
+                
+            end 
+        end
     end
 end)
 

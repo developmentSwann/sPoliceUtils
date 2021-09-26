@@ -41,6 +41,7 @@ client_scripts {
     "client/menu.lua",
     "client/vestiaire.lua",
     "client/armurerie.lua",
+    "client/gav.lua",
     "config.lua"
 }
 

@@ -8,7 +8,7 @@
 
 ---LoadingPrompt
 ---
---- Reference : https://github.com/citizenfx/fivem/blob/master/code/client/clrcore/External/Screen.cs#L341
+--- Reference : https://github.com/Citizenfx/fivem/blob/master/code/client/clrcore/External/Screen.cs#L341
 ---
 ---@param loadingText string
 ---@param spinnerType number
@@ -31,7 +31,7 @@ end
 
 ---LoadingPromptHide
 ---
---- Reference : https://github.com/citizenfx/fivem/blob/master/code/client/clrcore/External/Screen.cs#L361
+--- Reference : https://github.com/Citizenfx/fivem/blob/master/code/client/clrcore/External/Screen.cs#L361
 ---
 ---@return void
 function LoadingPromptHide()

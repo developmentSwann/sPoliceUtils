@@ -758,27 +758,36 @@ local interval = 1000
 
 
 
+
+
+local interval = 1000
+InZone = {}
+
 Citizen.CreateThread(function()
     while true do
-        local Timer = 500
-        for k,v in pairs(posammu)do 
-            if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then
+        Citizen.Wait(interval)
+        for k,v in pairs(position)do 
             local pCoords = GetEntityCoords(GetPlayerPed(-1), false)
             local distance = Vdist(pCoords.x, pCoords.y, pCoords.z, posammu[k].x, posammu[k].y, posammu[k].z)
             if distance <= 7.0  then
-                Timer = 0
+                interval = 0
+                InZone[v.Zones] = true
                 DrawMarker(20, posammu[k].x, posammu[k].y, posammu[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.3, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
+            else
+                if InZone[v.Zones] then
+                    interval = 1000
+                    InZone[v.Zones] = false
                 end
-                if distance <= 2.0 then
-                    Timer = 0   
-                            RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour accéder à l'armurerie ", time_display = 1 })
-                            if IsControlJustPressed(1,51) then           
-                                MenuAmmu()
-                        end   
-                    end
-                end 
             end
-        Citizen.Wait(Timer)
+            if distance <= 2.0 then
+                interval = 0
+                InZone[v.Zones] = true 
+                RageUI.Text({ message = "Appuyez sur ~y~[E]~s~ pour accéder à l'armurerie", time_display = 1 })
+                if IsControlJustPressed(1,51) then           
+                    MenuAmmu()
+                    end
+            end  
+        end
     end
 end)
 
